@@ -9,6 +9,8 @@ import cors from "cors";
 import userRouter from "./router/userRouter.js";
 import { FRONTEND_URL, MONGODB_URI } from "./config.js";
 
+const PORT = process.env.PORT || 5000;
+
 mongoose
   .connect(MONGODB_URI)
   .then(() => console.log("Conectado a mongoDB"))
@@ -42,8 +44,8 @@ app.get("/", (req, res) => {
 
 app.use("/api", userRouter);
 
-// server.listen(5000, () => {
-//   console.log("server listen:");
-// });
+server.listen(PORT, () => {
+   console.log("server listen:");
+ });
 
 export default app;
